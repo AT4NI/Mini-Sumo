@@ -1,4 +1,4 @@
-# Minisumo
+# Mini-Sumo
 Codes and documentation for my minisumo robot.
 It is focused on the development of competition robots made by me.
 The repository will include: 3D models, code, PCB and electronic schematics.
