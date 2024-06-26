@@ -16,7 +16,7 @@ Also, I would like to have version control of my projects.
 
 ## Minisumo Robots
 - I7ACH1: Basic Minisumo with 4 opponent sensors and 1 Line sensor
-## PCB's
+## PCB
 - Main boards:
   - **KETSINI: PCB designed for micro-sumo.*
 
