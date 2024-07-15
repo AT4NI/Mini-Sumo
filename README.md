@@ -14,8 +14,10 @@ Also, I would like to have version control of my projects.
 
 # Folders
 
-## Minisumo Robots
-- I7ACH1: Basic Minisumo with 4 opponent sensors and 1 Line sensor
+## Robots
+- I7ACH1: Minisumo with 4 sensors and 1 Line sensor
+- KETSINI: Microsumo with 4 sensors and 1 line sensor
+- ATANI:. Amateur RC Minisumo
 ## PCB's
 - Main boards:
   - *KETSINI: PCB designed for micro-sumo.*
@@ -23,10 +25,12 @@ Also, I would like to have version control of my projects.
 ## Code
 - I7ach1: main code used for minisumo robot I7ach1 which uses a ESP32-C3 as the main board
 - *K3TSINI: main code used for microsumo robot K3TSINI which uses a ESP32-C3 as the main controller*
+- ATANI: main code used for minisumo robot ATANI which uses a ARDUINO NANO as the main controller
 ## 3D Data
 - Robots
 	- I7ach1: main code used for minisumo robot I7ach1 which uses a ESP32-C3 as the main board
 	- *K3TSINI: main code used for microsumo robot K3TSINI which uses a ESP32-C3 as the main controller*
+ 	- ATANI: Amateur RC minisumo.
 
 # Software that I use
 The software I use, most of them are free license and easy to use.
