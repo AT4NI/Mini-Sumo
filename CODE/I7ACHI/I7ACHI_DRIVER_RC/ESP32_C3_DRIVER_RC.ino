@@ -1,10 +1,10 @@
 #include <Bluepad32.h>
 
 // Pinout del Puente H
-const int motorA1 = 10; // Pin de dirección 1 para motor A
-const int motorA2 = 7; // Pin de dirección 2 para motor A
-const int motorB1 = 6; // Pin de dirección 1 para motor B
-const int motorB2 = 5; // Pin de dirección 2 para motor B
+const int motorA1 = 10; 
+const int motorA2 = 7; 
+const int motorB1 = 6; 
+const int motorB2 = 5; 
 
 // Velocidades de los motores
 int speedA = 0;
@@ -12,6 +12,9 @@ int speedB = 0;
 
 // Umbral de deriva
 int driftThreshold = 65; // Ajusta este valor según sea necesario
+
+const int joystickMaxInput = 255;  
+const int joystickMaxOutput = 200;
 
 ControllerPtr myControllers[BP32_MAX_GAMEPADS];
 
@@ -56,7 +59,7 @@ void loop() {
     if (dataUpdated) {
         processControllers();
     }
-    delay(150); // Retardo para evitar saturación del bucle
+    delay(150); // EVITAR SATURACION
 }
 
 void processControllers() {
@@ -66,17 +69,19 @@ void processControllers() {
             int joystickLY = myControllers[i]->axisY();
 
             // Obtener el valor del joystick derecho en el eje X para giros
-            int joystickRX = myControllers[i]->axisRX(); // Joystick derecho para giros
+            int joystickRX = myControllers[i]->axisRX();
 
             // Aplicar ajuste de drift a los joysticks
             joystickLY = adjustJoystick(joystickLY);
             joystickRX = adjustJoystick(joystickRX);
 
-            // Calcular la velocidad y dirección del movimiento
-            speedA = joystickLY + joystickRX;
-            speedB = joystickLY - joystickRX;
+            // Limitar el movimiento máximo con las variables
+          joystickRX = map(joystickRX, -joystickMaxInput, joystickMaxInput, -joystickMaxOutput, joystickMaxOutput);
 
-            // Limitar el rango de velocidad entre -255 y 255
+            // Calcular la velocidad y dirección del movimiento
+            int speedA = joystickLY + joystickRX;
+            int speedB = joystickLY - joystickRX;
+
             speedA = constrain(speedA, -255, 255);
             speedB = constrain(speedB, -255, 255);
 
