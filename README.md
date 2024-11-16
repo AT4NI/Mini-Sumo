@@ -15,25 +15,25 @@ Also, I would like to have version control of my projects.
 # Folders
 
 ## Robots
-- I7ACH1: Minisumo with 4 sensors and 1 Line sensor
-- KETSINI: Microsumo with 4 sensors and 1 line sensor
+- I7ACH1: Minisumo with 4 sensors and 2 line sensor
+- SIRUKI: Microsumo with 3 sensors and 1 line sensor
 - ALO: Microsumo with 2 sensors and 1 line sensor
-- ATANI:. Amateur RC Minisumo
+- ATANI: Amateur RC Minisumo
 ## PCB's
 - Main boards:
-  - *KETSINI: PCB designed for micro-sumo.*
+  - *SIRUKI: PCB designed for micro-sumo.*
 
 ## Code
 - I7ach1: main code used for minisumo robot I7ach1 which uses a ESP32-C3 as the main board
-- *K3TSINI: main code used for microsumo robot K3TSINI which uses a ESP32-C3 as the main controller*
+- *SIRUKI: main code used for microsumo robot SIRUKI which uses a ESP32-C3 as the main controller*
 - ALO: main code used for microsumo robot ALO which uses a ESP32-C3 as the main controller
 - ATANI: main code used for minisumo robot ATANI which uses a ARDUINO NANO as the main controller
 ## 3D Data
 - Robots
-	- I7ach1: main code used for minisumo robot I7ach1 which uses a ESP32-C3 as the main board
-	- *K3TSINI: main code used for microsumo robot K3TSINI which uses a ESP32-C3 as the main controller*
-	- *ALO: main code used for microsumo robot K3TSINI which uses a ESP32-C3 as the main controller*
-  	- ATANI: Amateur RC minisumo.
+	- I7ach1: Base of the robot is steel and the case is PLA.
+	- *SIRUKI: Base of the robot is brass and the case is made of PLA*
+	- *ALO: The robot is made of PLA*
+	- ATANI: The robot is made of PLA.
 
 # Software that I use
 The software I use, most of them are free license and easy to use.
