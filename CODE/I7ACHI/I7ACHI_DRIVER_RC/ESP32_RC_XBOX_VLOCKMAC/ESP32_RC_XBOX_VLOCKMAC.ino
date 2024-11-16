@@ -1,30 +1,47 @@
 #include <Bluepad32.h>
 
+// Dirección MAC de tu mando específico 9C:AA:1B:51:B6:D3
+const uint8_t authorizedBTAddress[6] = {0x9C, 0xAA, 0x1B, 0x51, 0xB6, 0xD3};
+
 // Pinout del Puente H
 const int motorA1 = 10; 
-const int motorA2 = 7; 
-const int motorB1 = 6; 
-const int motorB2 = 5; 
+const int motorA2 = 7;  
+const int motorB1 = 6;  
+const int motorB2 = 5;  
 
-// Velocidades de los motores
 int speedA = 0;
 int speedB = 0;
 
-// Umbral de deriva
 int driftThreshold = 65; // Ajusta este valor según sea necesario
 
 const int joystickMaxInput = 255;  
-const int joystickMaxOutput = 200;
+const int joystickMaxOutput = 185;
 
 ControllerPtr myControllers[BP32_MAX_GAMEPADS];
 
 void onConnectedController(ControllerPtr ctl) {
-    for (int i = 0; i < BP32_MAX_GAMEPADS; i++) {
-        if (!myControllers[i]) {
-            myControllers[i] = ctl;
-            Serial.printf("Controller connected at index %d\n", i);
+    // Obtener la dirección Bluetooth del controlador conectado
+    const auto& properties = ctl->getProperties();
+    
+    bool isAuthorized = true;
+    for (int i = 0; i < 6; i++) {
+        if (properties.btaddr[i] != authorizedBTAddress[i]) {
+            isAuthorized = false;
             break;
         }
+    }
+
+    if (isAuthorized) {
+        for (int i = 0; i < BP32_MAX_GAMEPADS; i++) {
+            if (!myControllers[i]) {
+                myControllers[i] = ctl;
+                Serial.printf("Authorized controller connected at index %d\n", i);
+                break;
+            }
+        }
+    } else {
+        Serial.println("Unauthorized controller attempted to connect. Disconnecting...");
+        ctl->disconnect();
     }
 }
 
@@ -59,7 +76,7 @@ void loop() {
     if (dataUpdated) {
         processControllers();
     }
-    delay(150); // EVITAR SATURACION
+    delay(150); // Retardo para evitar saturación del bucle
 }
 
 void processControllers() {
@@ -75,13 +92,13 @@ void processControllers() {
             joystickLY = adjustJoystick(joystickLY);
             joystickRX = adjustJoystick(joystickRX);
 
-            // Limitar el movimiento máximo con las variables
-          joystickRX = map(joystickRX, -joystickMaxInput, joystickMaxInput, -joystickMaxOutput, joystickMaxOutput);
+            // Limitar el movimiento máximo del joystick
+            joystickRX = map(joystickRX, -joystickMaxInput, joystickMaxInput, -joystickMaxOutput, joystickMaxOutput);
 
             // Calcular la velocidad y dirección del movimiento
             int speedA = joystickLY + joystickRX;
             int speedB = joystickLY - joystickRX;
-
+            
             speedA = constrain(speedA, -255, 255);
             speedB = constrain(speedB, -255, 255);
 
@@ -91,6 +108,8 @@ void processControllers() {
         }
     }
 }
+
+
 
 void controlMotor(int pin1, int pin2, int speed) {
     if (speed >= 0) {
