@@ -22,7 +22,7 @@ const int joystickMaxOutput = 185;
 
 ControllerPtr myControllers[BP32_MAX_GAMEPADS]; 
 ```
-### Explanation
+### Function
 This function is automatically executed when a Bluetooth controller connects to the ESP32.
 - **authorizedBTAddress:** Bluetooth address of the authorized controller. Only this controller will be allowed to connect and control the robot.
 - **motorA1, motorA2, motorB1, motorB2:** Pins on the ESP32 assigned to control the two motors of the robot.
@@ -65,8 +65,8 @@ void onConnectedController(ControllerPtr ctl) {
 ### Authorisation by Bluetooth ID
 **The authorization process verifies** that the Bluetooth address of the connecting controller matches the one stored in the authorizedBTAddress variable. This step is critical because it ensures that only a specific controller (the authorized one) can connect to and control the robot.
 1. *A byte-by-byte comparison* is performed between the connecting controller's address (properties.btaddr) and the authorized address (authorizedBTAddress).
-2. *If all bytes match*, isAuthorized is set to ` true` , meaning the controller is authorized. it is stored in the first available slot in the myControllers array so that it can be used to control the robot.
-3. *If any byte doesn't match*, isAuthorized is set to ` false`  and A warning message is printed to the serial port, and the controller  is immediately disconnected using ctl->disconnect().
+2. *If all bytes match*, `isAuthorized` is set to ` true` , meaning the controller is authorized. it is stored in the first available slot in the myControllers array so that it can be used to control the robot.
+3. *If any byte doesn't match*, `isAuthorized` is set to ` false`  and A warning message is printed to the serial port, and the controller  is immediately disconnected using ctl->disconnect().
 
 This authorization mechanism ensures that only pre-defined and authorized controllers are allowed to interact with the robot, enhancing the system's security and control.
 
