@@ -111,7 +111,7 @@ void processControllers() {
     }
 }
 ```
-- ** For each connected controller**, the joystick values are obtained:
+- **For each connected controller**, the joystick values are obtained:
 	1. **axisY()** gets the Y-axis value from the left joystick, which is used for forward or backward movement of the robot.
 	2. **axisRX()** gets the X-axis value from the right joystick, which is used to control the turning of the robot.
 - **Drift** correction is applied to both joystick values using `adjustJoystick()`, ensuring that unwanted movements due to slight joystick deviations are ignored.
