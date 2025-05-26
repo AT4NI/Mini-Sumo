@@ -1,13 +1,14 @@
-    //BATTLE
+    //MOTOR A
 int Pin_AI1 = 5;
 int Pin_AI2 = 4;
-int Pin_PWA = 3;
-
+int Pin_PWA = 3;  //A PWM
+  //MOTOR B
 int Pin_BI1 = 7;
 int Pin_BI2 = 8;
-int Pin_PWB = 9;
+int Pin_PWB = 9;  //B PWM
 
 unsigned long time = 0;
+
 int sp1; // PWM for Motor A
 int sp2; // PWM for Motor B
 
@@ -27,51 +28,52 @@ void loop() {
     char data = Serial.read();
     Serial.println(data);
     time = millis();
-
+    
+              //Setting PWM values
     switch (data) {
-      case 'F':
-        sp1 = 255; // Maximum speed
-        sp2 = 235; // Maximum speed
+      case 'F':       //FOWARD
+        sp1 = 255; 
+        sp2 = 235; 
         Forward(sp1, sp2);
         break;
-      case 'B':
-        sp1 = 255; // Maximum speed
-        sp2 = 255; // Maximum speed
+      case 'B':         //BACKWARD
+        sp1 = 255; 
+        sp2 = 255; 
         Backward(sp1, sp2);
         break;
-      case 'L':
-        sp1 = 150; // Reduced speed
-        sp2 = 150; // Reduced speed
+      case 'L':       //TURN LEFT
+        sp1 = 150; 
+        sp2 = 150;
         Right(sp1, sp2);
         break;
-      case 'R':
-        sp1 = 150; // Reduced speed
-        sp2 = 150; // Reduced speed
+      case 'R':     //TURN RIGHT
+        sp1 = 150; 
+        sp2 = 150; 
         Left(sp1, sp2);
         break;
         
-            //ROUND
+                            //ROUND
       case 'G':
-        sp1 = 80; // Reduced speed
-        sp2 = 255; // Reduced speed
+        sp1 = 80;
+        sp2 = 255; 
         F_Left(sp1, sp2);
         break;
 
       case 'H':
-        sp1 = 80; // Reduced speed
-        sp2 = 255; // Reduced speed
+        sp1 = 80; 
+        sp2 = 255; 
         B_Left(sp1, sp2);
         break;
 
       case 'I':
-        sp1 = 255; // Reduced speed
-        sp2 = 80; // Reduced speed
+        sp1 = 255; 
+        sp2 = 80; 
         F_Right(sp1, sp2);
         break;
 
       case 'J':
-        sp1 = 255; // Reduced speed
-        sp2 = 80; // Reduced speed
+        sp1 = 255; 
+        sp2 = 80; 
         B_Right(sp1, sp2);
         break;
 
