@@ -16,6 +16,7 @@ Also, I would like to have version control of my projects.
 
 ## Robots
 - I7ACH1: Minisumo with 4 sensors and 2 line sensor
+- GYU: Minisumo with 4 sensors and 2 line sensor
 - SIRUKI: Microsumo with 3 sensors and 1 line sensor
 - ALO: Microsumo with 2 sensors and 1 line sensor
 - ATANI: Amateur RC Minisumo
@@ -25,6 +26,7 @@ Also, I would like to have version control of my projects.
 
 ## Code
 - I7ach1: main code used for minisumo robot I7ach1 which uses a ESP32-C3 as the main board
+- GYU: main code used for minisumo robot GYU which uses a ARDUINO NANO as the main controller
 - *SIRUKI: main code used for microsumo robot SIRUKI which uses a ESP32-C3 as the main controller*
 - ALO: main code used for microsumo robot ALO which uses a ESP32-C3 as the main controller
 - ATANI: main code used for minisumo robot ATANI which uses a ARDUINO NANO as the main controller
